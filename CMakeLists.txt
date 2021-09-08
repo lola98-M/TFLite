@@ -1,11 +1,12 @@
 cmake_minimum_required(VERSION 3.16)
-project(mnist C CXX)
+project(mnist)
 
 
+find_package(OpenCV REQUIRED)
 find_package(Tensorflow REQUIRED PATHS "/home/lola/tensorflow")
+include_directories( ${OpenCV_INCLUDE_DIRS} )
 
-set(CMAKE_CXX_STANDARD 11)
-add_executable(mnist
-  mnist_infer.cpp
-)
-target_link_libraries(mnist ${TensorFlow_LIBRARIES})
+add_executable(mnist mnist_infer.cpp )
+target_link_libraries(mnist ${OpenCV_LIBS} ${TensorFlow_LIBRARIES})
+set_property(TARGET mnist PROPERTY CXX_STANDARD 14)
+
