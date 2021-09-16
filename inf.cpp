@@ -33,7 +33,7 @@ int main(){
     }
         
     // read image file
-    cv::Mat img = cv::imread("sneakers.jpg");
+    cv::Mat img = cv::imread("5.jpg");
 
     cv::Mat inputImg;
     img.convertTo(inputImg, CV_32FC3);
@@ -50,7 +50,7 @@ int main(){
 
     // create model
     std::unique_ptr<tflite::FlatBufferModel> model =
-        tflite::FlatBufferModel::BuildFromFile("TensorflowLite_FashionMnist.tflite");
+        tflite::FlatBufferModel::BuildFromFile("tf_mnist.tflite");
         
     tflite::ops::builtin::BuiltinOpResolver resolver;
     std::unique_ptr<tflite::Interpreter> interpreter;
